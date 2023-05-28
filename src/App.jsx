@@ -1,4 +1,3 @@
-import './App.css'
 import data from '../countries/data.json'
 import Header from './comp/header.jsx'
 import Main from './comp/main.jsx'
