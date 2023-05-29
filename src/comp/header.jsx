@@ -26,7 +26,8 @@ function Header() {
             border-transparent
             hover:border-white
             flex
-            items-center"
+            items-center
+            transition-all"
             onClick={()=>setMode(!mode)}>
                 <img 
                 className="
