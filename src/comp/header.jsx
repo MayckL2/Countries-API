@@ -5,13 +5,24 @@ import lua from '../img/lua.png'
 function Header() {
     const [mode, setMode]= useState(true)
 
+    function mudaTema(){
+        document.querySelector("header").classList.toggle('bg-slate-700')
+        document.querySelector("header p").classList.toggle('text-black')
+        document.querySelector("button").classList.toggle('text-black')
+        document.querySelector("header").classList.toggle('border-slate-700')
+        setMode(!mode)
+    }
+
     return (
-        <header className="bg-slate-700 
+        <header className="
         flex 
         justify-between
         items-center 
         p-5
-        ">
+        border-b-4
+        bg-slate-700
+        "
+        >
             <p className="text-white font-bold">Where in the world?</p>
 
             <button 
@@ -27,14 +38,15 @@ function Header() {
             hover:border-white
             flex
             items-center
-            transition-all"
-            onClick={()=>setMode(!mode)}>
+            transition-all
+            "
+            onClick={mudaTema}>
                 <img 
                 className="
                 w-8
                 mx-2"
                 src={mode? lua : sol } alt="" />
-                <p>{mode? 'Dark Mode' : 'Light Mode'}</p>
+                {mode? 'Dark Mode' : 'Light Mode'}
             </button>
         </header>
     )

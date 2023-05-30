@@ -3,10 +3,12 @@ import Pais from './pais.jsx'
 import lupaClara from '../img/lupaClara.png'
 import seta from '../img/seta.png'
 import data from '../../countries/data.json'
+import {mode} from './header.jsx'
 
 function Main() {
     const [filter, setFilter] = useState(false)
     const [escRegiao, setEscRegiao] = useState()
+    const [pesquisa, setPesquisa] = useState('')
 
     // mostra e esconde o filtro de regioes
     function mostraFilter() {
@@ -19,7 +21,6 @@ function Main() {
         }
     }
 
-
     // importaçao dos paises
     // array possuim 249 arrays
     // let bandeira = data[0].flag
@@ -31,7 +32,18 @@ function Main() {
     // renderiza todos os paises da api dentro de elementos
       const lista=data.map(
         (c)=>
-        {if(c.region == escRegiao){
+
+        // filtra por continent
+        {if(c.region == escRegiao || escRegiao == null){
+
+            // muda oo nomes pesquisados para lowercase
+            let nomePesq = c.name
+            nomePesq = nomePesq.toLowerCase()
+            let pesq = pesquisa
+            pesq = pesq.toLowerCase()
+
+            // filtra por nome pesquisado
+            if(nomePesq.match(pesq) == pesq){
             return <div className="
             text-white
             bg-slate-700
@@ -45,17 +57,13 @@ function Main() {
             src={c.flag} alt="" />
             
             <div className="mx-5">
-            <h1 className="
-            text-2xl
-            font-bold
-            my-3">
-            {c.name}</h1>
+            <h1 className="text-2xl font-bold my-3">{c.name}</h1>
             <h1>Population: <span className="text-white/60">{c.population}</span></h1>
             <h1>Region: <span className="text-white/60">{c.region}</span></h1>
             <h1>Capital: <span className="text-white/60">{c.capital}</span></h1>
             </div>
         </div>
-        }}
+        }}}
         )
         
         
@@ -66,6 +74,7 @@ function Main() {
             '>
             <section className='flex justify-between'>
 
+                {/* input de pesquisa */}
                 <div className='
                                 bg-slate-700
                                 px-5
@@ -85,6 +94,7 @@ function Main() {
                                 '
                         src={lupaClara} alt="" />
                     <input
+                        onChange={(e)=> setPesquisa(e.target.value)}
                         className='
                                 h-full
                                 bg-transparent
@@ -96,6 +106,7 @@ function Main() {
                         type="text" />
                 </div>
 
+                {/* filtro de continentes */}
                 <div className='
                             bg-slate-700
                             px-5
@@ -137,6 +148,7 @@ function Main() {
                                 overflow-hidden
                                 "
                     >
+                        <li className='text-start hover:bg-gray-500 px-14 py-2 text-white cursor-pointer' onClick={()=> setEscRegiao(null)}>All</li>
                         <li className='text-start hover:bg-gray-500 px-14 py-2 text-white cursor-pointer' onClick={()=> setEscRegiao('Africa')}>Africa</li>
                         <li className='text-start hover:bg-gray-500 px-14 py-2 text-white cursor-pointer' onClick={()=> setEscRegiao('Americas')}>America</li>
                         <li className='text-start hover:bg-gray-500 px-14 py-2 text-white cursor-pointer' onClick={()=> setEscRegiao('Asia')}>Asia</li>
@@ -146,6 +158,7 @@ function Main() {
                 </div>
             </section>
 
+            {/* lista de paises */}
             <section className="
             flex
             items-center
