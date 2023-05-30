@@ -29,6 +29,7 @@ function Main() {
     // let capital = data[0].capital
     // let regiao = data[0].region
 
+    let cont = 0
     // renderiza todos os paises da api dentro de elementos
       const lista=data.map(
         (c)=>
@@ -63,9 +64,39 @@ function Main() {
             <h1>Capital: <span className="text-white/60">{c.capital}</span></h1>
             </div>
         </div>
-        }}}
+        }else{
+            cont ++
+            if(cont == 250){
+            return <div className="
+                                w-full
+                                font-bold
+                                text-4xl
+                                text-center
+                                text-white
+                                ">
+                Pais não encotrado...
+            </div>
+            }
+        }
+    }
+}
         )
 
+        function mostraLista(){
+            if(lista.length == 0){
+                return <div className="
+                w-full 
+                font-bold
+                text-4xl
+                text-center
+                text-white
+                ">
+                    Pais não encotrado...
+                </div>
+            }else{
+                return lista
+            }
+        }
         
         return (
             <main className='
@@ -164,9 +195,20 @@ function Main() {
             items-center
             justify-around
             flex-wrap
-            gap-5">
+            gap-5
+            ">
 
-            {lista}
+            {mostraLista()}
+
+{/* <div className="
+                w-full 
+                font-bold
+                text-4xl
+                text-center
+                text-white
+                ">
+                    Pais não encotrado...
+                </div> */}
 
             </section>
 
