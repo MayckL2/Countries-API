@@ -1,6 +1,7 @@
 import data from '../countries/data.json'
 import Header from './comp/header.jsx'
 import Main from './comp/main.jsx'
+import { useState } from 'react'
 
 // importaçao dos paises
 // array possuim 249 arrays
@@ -12,6 +13,7 @@ let regiao = data[0].region
 
 
 function App() {
+  const [mode, setMode]= useState(true)
 
   return (
     <>

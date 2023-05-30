@@ -7,11 +7,24 @@ function Header() {
 
     function mudaTema(){
         document.querySelector("header").classList.toggle('bg-slate-700')
-        document.querySelector("header p").classList.toggle('text-black')
-        document.querySelector("button").classList.toggle('text-black')
+        document.querySelector("header p").classList.toggle('text-white')
+        document.querySelector("button").classList.toggle('text-white')
         document.querySelector("header").classList.toggle('border-slate-700')
+
+        if(mode){
+            document.querySelector("body").style.backgroundColor = "white"
+            document.querySelector("div").style.color= "black"
+            document.querySelector("div").style.backgroundColor= "white"
+            document.querySelector(".changeColor").style.color= "black"
+            document.querySelector(".changeColor").style.backgroundColor= "white"   
+        }else{
+            document.querySelector("body").style.backgroundColor = "#1E2A3D"
+            document.querySelector("div").style.color= "white"
+            document.querySelector("div").style.backgroundColor = "#1E2A3D"
+        }
         setMode(!mode)
     }
+    
 
     return (
         <header className="
@@ -40,7 +53,7 @@ function Header() {
             items-center
             transition-all
             "
-            onClick={mudaTema}>
+            >
                 <img 
                 className="
                 w-8

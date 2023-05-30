@@ -3,7 +3,7 @@ import Pais from './pais.jsx'
 import lupaClara from '../img/lupaClara.png'
 import seta from '../img/seta.png'
 import data from '../../countries/data.json'
-import {mode} from './header.jsx'
+import mode from './header.jsx'
 
 function Main() {
     const [filter, setFilter] = useState(false)
@@ -65,7 +65,7 @@ function Main() {
         </div>
         }}}
         )
-        
+
         
         return (
             <main className='
