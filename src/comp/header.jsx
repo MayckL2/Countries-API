@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import sol from '../img/sol.png'
 import lua from '../img/lua.png'
 
@@ -12,6 +12,9 @@ function Header() {
         document.documentElement.classList.remove('dark')
     }
 
+    useEffect(()=>{
+        localStorage.theme = 'dark'
+    })
     // muda o tema do site usando localStorage com tailwind
     function mudaTema(){
         mode? localStorage.theme = 'light' : localStorage.theme = 'dark'
