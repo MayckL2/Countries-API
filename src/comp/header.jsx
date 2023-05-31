@@ -5,23 +5,16 @@ import lua from '../img/lua.png'
 function Header() {
     const [mode, setMode]= useState(true)
 
-    function mudaTema(){
-        document.querySelector("header").classList.toggle('bg-slate-700')
-        document.querySelector("header p").classList.toggle('text-white')
-        document.querySelector("button").classList.toggle('text-white')
-        document.querySelector("header").classList.toggle('border-slate-700')
+    // carrega o tema configurado pelo navegador
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+    } else {
+        document.documentElement.classList.remove('dark')
+    }
 
-        if(mode){
-            document.querySelector("body").style.backgroundColor = "white"
-            document.querySelector("div").style.color= "black"
-            document.querySelector("div").style.backgroundColor= "white"
-            document.querySelector(".changeColor").style.color= "black"
-            document.querySelector(".changeColor").style.backgroundColor= "white"   
-        }else{
-            document.querySelector("body").style.backgroundColor = "#1E2A3D"
-            document.querySelector("div").style.color= "white"
-            document.querySelector("div").style.backgroundColor = "#1E2A3D"
-        }
+    // muda o tema do site usando localStorage com tailwind
+    function mudaTema(){
+        mode? localStorage.theme = 'light' : localStorage.theme = 'dark'
         setMode(!mode)
     }
     
@@ -32,15 +25,18 @@ function Header() {
         justify-between
         items-center 
         p-5
-        border-b-4
-        bg-slate-700
+        drop-shadow
+        dark:drop-shadow-[0_1px_1px_rgba(255,255,255)]
+        bg-white
+        dark:bg-slate-700
         "
         >
-            <p className="text-white font-bold">Where in the world?</p>
+            <p className="text-black dark:text-white font-bold">Where in the world?</p>
 
             <button 
             className="
-            text-white
+            text-black 
+            dark:text-white
             rounded-full
             p-2
             text-sm
@@ -53,7 +49,7 @@ function Header() {
             items-center
             transition-all
             "
-            onClick={()=> alert("Em desenvolvimento")}
+            onClick={()=> mudaTema()}
             >
                 <img 
                 className="

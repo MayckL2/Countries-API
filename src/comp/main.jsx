@@ -46,8 +46,10 @@ function Main() {
             // filtra por nome pesquisado
             if(nomePesq.match(pesq) == pesq){
             return <div className="
-            text-white
-            bg-slate-700
+            text-black
+            dark:text-white
+            bg-slate-100
+            dark:bg-slate-700
             pb-5
             rounded-md
             overflow-hidden
@@ -59,9 +61,9 @@ function Main() {
             
             <div className="mx-5">
             <h1 className="text-2xl font-bold my-3">{c.name}</h1>
-            <h1>Population: <span className="text-white/60">{c.population}</span></h1>
-            <h1>Region: <span className="text-white/60">{c.region}</span></h1>
-            <h1>Capital: <span className="text-white/60">{c.capital}</span></h1>
+            <h1>Population: <span className="dark:text-white/60">{c.population}</span></h1>
+            <h1>Region: <span className="dark:text-white/60">{c.region}</span></h1>
+            <h1>Capital: <span className="dark:text-white/60">{c.capital}</span></h1>
             </div>
         </div>
         }else{
@@ -100,14 +102,16 @@ function Main() {
         
         return (
             <main className='
-            bg-slate-800
+            bg-slate-200
+            dark:bg-slate-800
             p-10
             '>
             <section className='flex justify-between'>
 
                 {/* input de pesquisa */}
                 <div className='
-                                bg-slate-700
+                                bg-gray-100
+                                dark:bg-slate-700
                                 px-5
                                 rounded-md
                                 flex
@@ -139,7 +143,8 @@ function Main() {
 
                 {/* filtro de continentes */}
                 <div className='
-                            bg-slate-700
+                            bg-gray-100
+                            dark:bg-slate-700
                             px-5
                             rounded-md
                             flex
@@ -156,14 +161,16 @@ function Main() {
                 >
 
                     <p className='
-                                text-white
+                                text-gray-500
+                                dark:text-white
                                 cursor-pointer'>Filter by Region</p>
 
                     <img
                         className='
                                 w-4
                                 rotate-90
-                                invert'
+                                invert-0
+                                dark:invert'
                         src={seta} alt="seta baixo" />
 
                     <ul
