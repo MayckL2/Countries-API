@@ -106,7 +106,7 @@ function Main() {
             dark:bg-slate-800
             p-10
             '>
-            <section className='flex justify-between'>
+            <section className='flex justify-between flex-col sm:flex-row items-center'>
 
                 {/* input de pesquisa */}
                 <div className='
