@@ -179,19 +179,21 @@ function Main() {
                         className="
                                 absolute
                                 top-12
-                                bg-slate-700
                                 rounded-md
                                 hidden
                                 flex-col
                                 overflow-hidden
+                                bg-white
+                                dark:bg-slate-700
+                                dark:text-white
                                 "
                     >
-                        <li className='text-start hover:bg-gray-500 px-14 py-2 text-white cursor-pointer' onClick={()=> setEscRegiao(null)}>All</li>
-                        <li className='text-start hover:bg-gray-500 px-14 py-2 text-white cursor-pointer' onClick={()=> setEscRegiao('Africa')}>Africa</li>
-                        <li className='text-start hover:bg-gray-500 px-14 py-2 text-white cursor-pointer' onClick={()=> setEscRegiao('Americas')}>America</li>
-                        <li className='text-start hover:bg-gray-500 px-14 py-2 text-white cursor-pointer' onClick={()=> setEscRegiao('Asia')}>Asia</li>
-                        <li className='text-start hover:bg-gray-500 px-14 py-2 text-white cursor-pointer' onClick={()=> setEscRegiao('Oceania')}>Oceania</li>
-                        <li className='text-start hover:bg-gray-500 px-14 py-2 text-white cursor-pointer' onClick={()=> setEscRegiao('Europe')}>Europa</li>
+                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={()=> setEscRegiao(null)}>All</li>
+                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={()=> setEscRegiao('Africa')}>Africa</li>
+                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={()=> setEscRegiao('Americas')}>America</li>
+                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={()=> setEscRegiao('Asia')}>Asia</li>
+                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={()=> setEscRegiao('Oceania')}>Oceania</li>
+                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={()=> setEscRegiao('Europe')}>Europa</li>
                     </ul>
                 </div>
             </section>
