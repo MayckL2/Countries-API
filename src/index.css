@@ -17,3 +17,7 @@ body{
     background-color: #334155;
     /* color: white; */
 }
+
+html{
+    scroll-behavior: smooth;
+}

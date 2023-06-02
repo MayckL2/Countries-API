@@ -84,6 +84,7 @@ function Main() {
 }
         )
 
+        // verifica se o pais pesquisa foi encontrado
         function mostraLista(){
             if(lista.length == 0){
                 return <div className="

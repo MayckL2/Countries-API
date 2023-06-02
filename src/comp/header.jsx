@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import sol from '../img/sol.png'
 import lua from '../img/lua.png'
+import arrow from '../img/arrow.svg'
 
 function Header() {
     const [mode, setMode]= useState(true)
@@ -23,45 +24,65 @@ function Header() {
     
 
     return (
-        <header className="
-        flex 
-        justify-between
-        items-center 
-        p-5
-        drop-shadow
-        dark:drop-shadow-[0_1px_1px_rgba(255,255,255)]
-        bg-white
-        dark:bg-slate-700
-        "
-        >
-            <p className="text-black dark:text-white font-bold">Where in the world?</p>
-
-            <button 
+        <div>
+            <header 
+            id="topo"
             className="
-            text-black 
-            dark:text-white
-            rounded-full
-            p-2
-            text-sm
-            font-bold
-            border-2
-            border-solid
-            border-transparent
-            hover:border-white
-            flex
-            items-center
-            transition-all
+            flex 
+            justify-between
+            items-center 
+            p-5
+            drop-shadow
+            dark:drop-shadow-[0_1px_1px_rgba(255,255,255)]
+            bg-white
+            dark:bg-slate-700
             "
-            onClick={()=> mudaTema()}
             >
-                <img 
+                <p className="text-black dark:text-white font-bold">Where in the world?</p>
+
+                <button 
                 className="
-                w-8
-                mx-2"
-                src={mode? lua : sol } alt="" />
-                {mode? 'Dark Mode' : 'Light Mode'}
-            </button>
-        </header>
+                text-black 
+                dark:text-white
+                rounded-full
+                p-2
+                text-sm
+                font-bold
+                border-2
+                border-solid
+                border-transparent
+                hover:border-white
+                flex
+                items-center
+                transition-all
+                "
+                onClick={()=> mudaTema()}
+                >
+                    <img 
+                    className="
+                    w-8
+                    mx-2"
+                    src={mode? lua : sol } alt="" />
+                    {mode? 'Dark Mode' : 'Light Mode'}
+                </button>
+
+            </header>
+
+                <a href="#topo"
+                className="
+                fixed
+                bottom-10
+                right-5
+                text-red-500
+                ">
+                <img src={arrow} alt="setaCima" 
+                className="
+                w-12
+                dark:invert
+                "
+                />
+                </a>
+        </div>
     )
 }
 
