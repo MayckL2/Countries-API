@@ -1,9 +1,7 @@
 import { useState } from "react"
-import Pais from './pais.jsx'
 import lupaClara from '../img/lupaClara.png'
 import seta from '../img/seta.png'
 import data from '../../countries/data.json'
-import mode from './header.jsx'
 import Info from './info.jsx'
 
 function Main() {
@@ -106,24 +104,17 @@ function Main() {
         }
     }
 
-    // mostra detalhes sobre o pais
+    // mostra detalhes sobre o pais ou a tela normal com todos os paises
     function infoPais() {
         if (pais != null) {
             return (
-                <Info pais={pais} />
+                <Info pais={pais} fecha={()=> setPais(null)} />
             )
-        }
-    }
-
-    return (
-        <main className='
-            bg-slate-200
-            dark:bg-slate-800
-            p-10
-            '>
-
-            {/* tela normal */}
-            <section className='flex justify-between flex-col sm:flex-row items-center'>
+        }else{
+            return(
+                <>
+                {/* tela normal */}
+                <section className='flex justify-between flex-col sm:flex-row items-center'>
 
                 {/* input de pesquisa */}
                 <div className='
@@ -214,10 +205,6 @@ function Main() {
                     </ul>
                 </div>
             </section>
-
-
-            {/* informaçoes sobre o pais */}
-            {infoPais()}
             
             <section className="
             flex
@@ -230,6 +217,21 @@ function Main() {
                 {mostraLista()}
 
             </section>
+            </>
+            )
+        }
+    }
+
+    return (
+        <main className='
+            bg-slate-200
+            dark:bg-slate-800
+            p-10
+            '>
+
+            {/* informaçoes sobre o pais */}
+            {infoPais()}
+            
 
         </main>
     )

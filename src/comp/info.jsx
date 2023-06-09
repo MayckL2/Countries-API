@@ -1,18 +1,26 @@
 import data from '../../countries/data.json'
-import Main from './main'
 
 export default function Info(props){
     let pais = data[props.pais]
 
     // renderizas as bordas dos paises, se existirem
     function bordas(){
+
         if(pais.borders != null){
             return(
-                pais.borders.map(
+                <div className='
+                flex
+                flex-wrap
+                gap-2
+                justify-center
+                '>
+
+                {pais.borders.map(
                     (c)=>
                         <p
                         className='
-                        bg-slate-700
+                        bg-slate-200
+                        dark:bg-slate-700
                         py-1
                         px-4
                         dark:text-white
@@ -20,7 +28,8 @@ export default function Info(props){
                         mx-1
                         rounded
                         '>{c}</p>
-                )
+                        )}
+                </div>
             )
         }else{
             return(
@@ -32,13 +41,17 @@ export default function Info(props){
     return(
         <div className='
         absolute
+        top-10
         left-0
-        bg-slate-800
-        h-full
+        pt-20
+        bg-slate-100
+        dark:bg-slate-800
         w-full
         px-10
+        z-10
         '>
             <button
+            onClick={props.fecha}
             className='
             dark:text-white
             shadow
@@ -55,18 +68,27 @@ export default function Info(props){
             className='
             my-10
             flex
+            flex-col
+            lg:flex-row
             gap-40
             '>
                 <img 
-                className="bandeiraInfo"
+                className="bandeiraInfo object-contain lg:object-cover"
                 src={pais.flag} alt="bandeira" />
             
                 <div
                 className='
                 dark:text-white
-                
+                grid
+                grid-cols-1
+                grid-rows-4
+                md:grid-cols-2
+                md:grid-rows-3
                 '>
-                    <div>
+                    <div className='
+                    flex
+                    flex-col
+                    gap-2'>
 
                         <h1 className='font-bold text-3xl mb-5'>{pais.name}</h1>
 
@@ -77,22 +99,30 @@ export default function Info(props){
                         <p>Capital: <span className="dark:text-white/60">{pais.capital}</span></p>
                     </div>
                         
-                    <div>
+                    <div className='
+                    flex
+                    flex-col
+                    gap-2
+                    mt-16'>
                         <p>Top Level Domain: <span className="dark:text-white/60">{pais.topLevelDomain}</span></p>
                         <p>Currencies: <span className="dark:text-white/60">{pais.currencies[0].name}</span></p>
                         <p>Language: <span className="dark:text-white/60">{pais.languages[0].name}</span></p>
                     </div>
 
                     <div
-                    className='flex'>
-                        <p>Border Countries:</p>
+                    className='flex
+                    items-start
+                    justify-start
+                    lg:col-span-2
+                    mt-10
+                    '>
+                        <p className='w-36 text-lg'>Border Countries:</p>
 
                         {bordas()}
-                        {/* {pais.borders} */}
+
                     </div>
                 </div>
             </div>
-            {/* {data[props.pais].region} */}
         </div>
     )
 }

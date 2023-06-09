@@ -40,6 +40,7 @@ function Header() {
             top-0
             left-0
             w-full
+            z-20
             "
             >
                 <p className="text-black dark:text-white font-bold">Where in the world?</p>
