@@ -70,7 +70,7 @@ export default function Info(props){
             flex
             flex-col
             lg:flex-row
-            gap-40
+            gap-10
             '>
                 <img 
                 className="bandeiraInfo object-contain lg:object-cover"
@@ -84,6 +84,7 @@ export default function Info(props){
                 grid-rows-4
                 md:grid-cols-2
                 md:grid-rows-3
+
                 '>
                     <div className='
                     flex
