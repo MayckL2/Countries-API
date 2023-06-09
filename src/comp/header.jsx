@@ -24,7 +24,7 @@ function Header() {
     
 
     return (
-        <div>
+        <div className="mb-20">
             <header 
             id="topo"
             className="
@@ -36,6 +36,10 @@ function Header() {
             dark:drop-shadow-[0_1px_1px_rgba(255,255,255)]
             bg-white
             dark:bg-slate-700
+            fixed
+            top-0
+            left-0
+            w-full
             "
             >
                 <p className="text-black dark:text-white font-bold">Where in the world?</p>

@@ -4,11 +4,13 @@ import lupaClara from '../img/lupaClara.png'
 import seta from '../img/seta.png'
 import data from '../../countries/data.json'
 import mode from './header.jsx'
+import Info from './info.jsx'
 
 function Main() {
     const [filter, setFilter] = useState(false)
     const [escRegiao, setEscRegiao] = useState()
     const [pesquisa, setPesquisa] = useState('')
+    const [pais, setPais] = useState()
 
     // mostra e esconde o filtro de regioes
     function mostraFilter() {
@@ -31,82 +33,96 @@ function Main() {
 
     let cont = 0
     // renderiza todos os paises da api dentro de elementos
-      const lista=data.map(
-        (c)=>
+    const lista = data.map(
+        (c, i) =>
 
         // filtra por continent
-        {if(c.region == escRegiao || escRegiao == null){
+        {
+            if (c.region == escRegiao || escRegiao == null) {
 
-            // muda oo nomes pesquisados para lowercase
-            let nomePesq = c.name
-            nomePesq = nomePesq.toLowerCase()
-            let pesq = pesquisa
-            pesq = pesq.toLowerCase()
+                // muda oo nomes pesquisados para lowercase
+                let nomePesq = c.name
+                nomePesq = nomePesq.toLowerCase()
+                let pesq = pesquisa
+                pesq = pesq.toLowerCase()
 
-            // filtra por nome pesquisado
-            if(nomePesq.match(pesq) == pesq){
-            return <div className="
-            text-black
-            dark:text-white
-            bg-slate-100
-            dark:bg-slate-700
-            pb-5
-            rounded-md
-            overflow-hidden
-            cursor-pointer
-            tamanhoDiv">
-            <img
-            className="imagemBandeira"
-            src={c.flag} alt="" />
-            
-            <div className="mx-5">
-            <h1 className="text-2xl font-bold my-3">{c.name}</h1>
-            <h1>Population: <span className="dark:text-white/60">{c.population}</span></h1>
-            <h1>Region: <span className="dark:text-white/60">{c.region}</span></h1>
-            <h1>Capital: <span className="dark:text-white/60">{c.capital}</span></h1>
-            </div>
-        </div>
-        }else{
-            cont ++
-            if(cont == 250){
-            return <div className="
+                // filtra por nome pesquisado
+                if (nomePesq.match(pesq) == pesq) {
+                    return <div
+                        onClick={() => setPais(i)}
+                        className="
+                        text-black
+                        dark:text-white
+                        bg-slate-100
+                        dark:bg-slate-700
+                        pb-5
+                        rounded-md
+                        overflow-hidden
+                        cursor-pointer
+                        tamanhoDiv">
+                        <img
+                            className="imagemBandeira"
+                            src={c.flag} alt="" />
+
+                        <div className="mx-5">
+                            <h1 className="text-2xl font-bold my-3">{c.name}</h1>
+                            <h1>Population: <span className="dark:text-white/60">{c.population}</span></h1>
+                            <h1>Region: <span className="dark:text-white/60">{c.region}</span></h1>
+                            <h1>Capital: <span className="dark:text-white/60">{c.capital}</span></h1>
+                        </div>
+                    </div>
+                } else {
+                    cont++
+                    if (cont == 250) {
+                        return <div className="
                                 w-full
                                 font-bold
                                 text-4xl
                                 text-center
                                 text-white
                                 ">
-                Pais não encotrado...
-            </div>
+                            Pais não encotrado...
+                        </div>
+                    }
+                }
             }
         }
-    }
-}
-        )
+    )
 
-        // verifica se o pais pesquisa foi encontrado
-        function mostraLista(){
-            if(lista.length == 0){
-                return <div className="
+    // verifica se o pais pesquisa foi encontrado
+    function mostraLista() {
+        if (lista.length == 0) {
+            return <div className="
                 w-full 
                 font-bold
                 text-4xl
                 text-center
                 text-white
                 ">
-                    Pais não encotrado...
-                </div>
-            }else{
-                return lista
-            }
+                Pais não encotrado...
+            </div>
+        } else {
+            return lista
         }
-        
-        return (
-            <main className='
+    }
+
+    // mostra detalhes sobre o pais
+    function infoPais() {
+        if (pais != null) {
+            return (
+                <Info pais={pais} />
+            )
+        }
+    }
+
+    return (
+        <main className='
             bg-slate-200
             dark:bg-slate-800
             p-10
             '>
+
+            {/* tela normal */}
             <section className='flex justify-between flex-col sm:flex-row items-center'>
 
                 {/* input de pesquisa */}
@@ -130,7 +146,7 @@ function Main() {
                                 '
                         src={lupaClara} alt="" />
                     <input
-                        onChange={(e)=> setPesquisa(e.target.value)}
+                        onChange={(e) => setPesquisa(e.target.value)}
                         className='
                                 h-full
                                 bg-transparent
@@ -189,17 +205,20 @@ function Main() {
                                 dark:text-white
                                 "
                     >
-                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={()=> setEscRegiao(null)}>All</li>
-                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={()=> setEscRegiao('Africa')}>Africa</li>
-                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={()=> setEscRegiao('Americas')}>America</li>
-                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={()=> setEscRegiao('Asia')}>Asia</li>
-                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={()=> setEscRegiao('Oceania')}>Oceania</li>
-                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={()=> setEscRegiao('Europe')}>Europa</li>
+                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={() => setEscRegiao(null)}>All</li>
+                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={() => setEscRegiao('Africa')}>Africa</li>
+                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={() => setEscRegiao('Americas')}>America</li>
+                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={() => setEscRegiao('Asia')}>Asia</li>
+                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={() => setEscRegiao('Oceania')}>Oceania</li>
+                        <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={() => setEscRegiao('Europe')}>Europa</li>
                     </ul>
                 </div>
             </section>
 
-            {/* lista de paises */}
+
+            {/* informaçoes sobre o pais */}
+            {infoPais()}
+            
             <section className="
             flex
             items-center
@@ -208,28 +227,10 @@ function Main() {
             gap-5
             ">
 
-            {mostraLista()}
-
-{/* <div className="
-                w-full 
-                font-bold
-                text-4xl
-                text-center
-                text-white
-                ">
-                    Pais não encotrado...
-                </div> */}
+                {mostraLista()}
 
             </section>
 
-            {/* mostrar paises por outro componente (falhou) */}
-            {/* <Pais
-                img={bandeira}
-                name={nomePais}
-                populacao={populacao}
-                regiao={regiao}
-                capital={capital}
-            /> */}
         </main>
     )
 }
