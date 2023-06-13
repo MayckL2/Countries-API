@@ -104,11 +104,17 @@ function Main() {
         }
     }
 
+    // 
+    function fecha(){
+        setPais(null)
+        setPesquisa('')
+    }
+
     // mostra detalhes sobre o pais ou a tela normal com todos os paises
     function infoPais() {
         if (pais != null) {
             return (
-                <Info pais={pais} fecha={()=> setPais(null)} />
+                <Info pais={pais} fecha={()=> fecha()} />
             )
         }else{
             return(
