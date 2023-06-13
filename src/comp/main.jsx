@@ -104,7 +104,7 @@ function Main() {
         }
     }
 
-    // 
+    // reseta pesquisa de paises e volta para tela inicial
     function fecha(){
         setPais(null)
         setPesquisa('')
@@ -143,6 +143,7 @@ function Main() {
                                 '
                         src={lupaClara} alt="" />
                     <input
+                        // pesquisa paises pelo nome ao digitar
                         onChange={(e) => setPesquisa(e.target.value)}
                         className='
                                 h-full
@@ -171,6 +172,7 @@ function Main() {
                             relative
                             cursor-pointer
                             '
+                            // altera filtro para exibir os paises
                     onClick={() => mostraFilter()}
                 >
 
@@ -202,6 +204,7 @@ function Main() {
                                 dark:text-white
                                 "
                     >
+                        {/* seleciona regiao dos paises a serem exibidos */}
                         <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={() => setEscRegiao(null)}>All</li>
                         <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={() => setEscRegiao('Africa')}>Africa</li>
                         <li className='text-start hover:bg-gray-500 px-14 py-2 cursor-pointer' onClick={() => setEscRegiao('Americas')}>America</li>
@@ -220,6 +223,7 @@ function Main() {
             gap-5
             ">
 
+                {/* exibe paises que foram pesquisados */}
                 {mostraLista()}
 
             </section>
@@ -235,7 +239,7 @@ function Main() {
             p-10
             '>
 
-            {/* informaçoes sobre o pais */}
+            {/* renderiza todo o site */}
             {infoPais()}
             
 

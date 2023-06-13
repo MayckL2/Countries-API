@@ -51,6 +51,7 @@ export default function Info(props){
         z-10
         '>
             <button
+            // fecha o componente info e abre o main
             onClick={props.fecha}
             className='
             dark:text-white
