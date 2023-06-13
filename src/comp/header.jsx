@@ -74,20 +74,6 @@ function Header() {
 
             </header>
 
-                <a href="#topo"
-                className="
-                fixed
-                bottom-10
-                right-5
-                text-red-500
-                ">
-                <img src={arrow} alt="setaCima" 
-                className="
-                w-12
-                dark:invert
-                "
-                />
-                </a>
         </div>
     )
 }
