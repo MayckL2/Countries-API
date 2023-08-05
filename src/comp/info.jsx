@@ -95,7 +95,7 @@ export default function Info(props){
                         <h1 className='font-bold text-3xl mb-5'>{pais.name}</h1>
 
                         <p>Native Name: <span className="dark:text-white/60">{pais.nativeName}</span></p>
-                        <p>Polution: <span className="dark:text-white/60">{pais.population}</span></p>
+                        <p>Population: <span className="dark:text-white/60">{pais.population}</span></p>
                         <p>Region: <span className="dark:text-white/60">{pais.region}</span></p>
                         <p>Sub Region: <span className="dark:text-white/60">{pais.subregion}</span></p>
                         <p>Capital: <span className="dark:text-white/60">{pais.capital}</span></p>
